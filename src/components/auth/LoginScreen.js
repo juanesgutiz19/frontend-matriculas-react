@@ -35,12 +35,6 @@ export const LoginScreen = () => {
                             </div>
                             <button type="submit" className="btn btn-primary w-100">Iniciar sesión</button>
                         </form>
-{/* 
-                        <p className="font-weight-bold text-center text-muted">O inicia sesión con</p>
-                        <div className="d-flex justify-content-around">
-                            <button type="button" className="btn btn-outline-light flex-grow-1 mr-2"><i className="fab fa-google lead mr-2"></i> Google</button>
-                            <button type="button" className="btn btn-outline-light flex-grow-1 ml-2"><i className="fab fa-facebook-f lead mr-2"></i> Facebook</button>
-                        </div> */}
                         <div className="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
                             <p className="d-inline-block mb-0 account">¿Todavia no tienes una cuenta?</p> <a href="/#" className="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
                         </div>
