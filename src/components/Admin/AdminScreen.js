@@ -1,9 +1,10 @@
 import React from 'react'
+import { Navbar } from '../ui/Navbar'
 
 export const AdminScreen = () => {
     return (
         <div>
-            <h1>AdminScreen</h1>
+            <Navbar />
         </div>
     )
 }
