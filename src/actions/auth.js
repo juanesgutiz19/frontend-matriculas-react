@@ -1,4 +1,4 @@
-import { fetchSinToken } from "../helpers/fetch";
+import { fetchConToken, fetchSinToken } from "../helpers/fetch";
 import { types } from '../types/types';
 import jwt_decode from "jwt-decode";
 import Swal from 'sweetalert2';
@@ -30,6 +30,7 @@ export const startLogin = ( username, password ) => {
 
 export const startRegister = ( username, password) => {
     return async ( dispatch ) => {
+        
         const resp = await fetchSinToken('admins', { username, password }, 'POST');
         const body = await resp.json();
         
@@ -47,6 +48,31 @@ export const startRegister = ( username, password) => {
         }
     }
 }
+
+export const startChecking = () => {
+    return async ( dispatch ) => {
+
+        // Es un GET. No se requiere pasar tipo de método.
+        const resp = await fetchConToken('login/renew');
+        const body = await resp.json();
+        
+        if (body.ok){
+            localStorage.setItem('token', body.token);
+            localStorage.setItem('token-init-date', new Date().getTime() );
+
+            const { user } = body
+            dispatch( login({
+                uid: body.user._id,
+                username: user.username
+            }) );
+        } else {
+            // Token no es correcto, se cancela el cheking (se pondrá en false)
+            dispatch(checkingFinish());
+        }
+    }
+}
+
+const checkingFinish = () => ({ type: types.authCheckingFinish });
 
 // Acción síncrona
 const login = ( user ) => ({

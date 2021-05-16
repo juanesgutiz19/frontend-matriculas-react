@@ -35,7 +35,7 @@ export const RegisterScreen = () => {
                     <div className="px-lg-5 pt-lg-4 pb-lg-3 p-4 m-auto w-50">
                         <img src={ graduacion } alt="graduacion" className="img-fluid img-fluid-register" />
                     </div>
-                    <div className="align-self-center w-75 px-lg-5 py-lg-4 p-4">
+                    <div className="align-self-center w-50 px-lg-5 py-lg-4 p-4">
                         <h1 className="font-weight-bold mb-4">Regístrese</h1>
                         <form className="mb-5" 
                         onSubmit={ handleRegister }
