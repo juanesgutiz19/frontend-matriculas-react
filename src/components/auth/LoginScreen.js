@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
 import { startLogin } from '../../actions/auth';
  
-import './login.css';
+import './auth.css';
 import { default as graduacion } from '../../assets/svg/graduacion.svg';
 
 export const LoginScreen = () => {
@@ -65,12 +65,12 @@ export const LoginScreen = () => {
                                     value={ password }
                                     onChange={handleInputChange}
                                     />
-                                <a href="/#" id="emailHelp" className="form-text text-muted text-decoration-none">¿Has olvidado tu contraseña?</a>
+                                <a href="/login" id="emailHelp" className="form-text text-muted text-decoration-none">¿Has olvidado tu contraseña?</a>
                             </div>
                             <button type="submit" className="btn btn-primary w-100">Iniciar sesión</button>
                         </form>
                         <div className="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-                            <p className="d-inline-block mb-0 account">¿Todavia no tienes una cuenta?</p> <a href="/#" className="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
+                            <p className="d-inline-block mb-0 account">¿Eres administrador y no tienes cuenta?</p> <a href="/#" className="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
                         </div>
                     </div>
                     

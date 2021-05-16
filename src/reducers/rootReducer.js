@@ -5,5 +5,4 @@ import { authReducer } from './authReducer';
 // Cómo lucirá todo el store
 export const rootReducer = combineReducers({
     auth: authReducer
-    // TODO AuthReducer
 })
