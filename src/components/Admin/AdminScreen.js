@@ -5,6 +5,7 @@ export const AdminScreen = () => {
     return (
         <div>
             <Navbar />
+            <h1>AdminScreen</h1>
         </div>
     )
 }

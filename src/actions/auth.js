@@ -28,7 +28,7 @@ export const startLogin = ( username, password ) => {
     }
 }
 
-export const startRegister = ( username, password) => {
+export const startRegister = ( username, password ) => {
     return async ( dispatch ) => {
         
         const resp = await fetchSinToken('admins', { username, password }, 'POST');
@@ -38,10 +38,12 @@ export const startRegister = ( username, password) => {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime() );
 
+            const userType = 'Admin'
             const { admin } = body
             dispatch( login({
                 uid: body.admin._id,
-                username: admin.username
+                username: admin.username,
+                tipoUsuario: userType
             }) );
         } else {
             Swal.fire('Error', body.msg, 'error');
@@ -78,4 +80,15 @@ const checkingFinish = () => ({ type: types.authCheckingFinish });
 const login = ( user ) => ({
     type: types.authLogin,
     payload: user
-})
+});
+
+// No se pone startLogout en authReducer porque es algo que puede fallar (por ejemplo saturación de local storage)
+export const startLogout = () => {
+    return ( dispatch ) => {
+        
+        localStorage.clear();
+        dispatch(logout());
+    }
+}
+
+const logout = () => ({ type: types.authLogout });
