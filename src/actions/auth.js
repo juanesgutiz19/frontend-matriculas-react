@@ -17,9 +17,11 @@ export const startLogin = ( username, password ) => {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime() );
 
+            let loginName = (body.tipoUsuario === 'Admin') ?  username : decoded.loginName;
+
             dispatch( login({
                 uid: decoded.uid,
-                username: username,
+                username: loginName,
                 tipoUsuario: body.tipoUsuario
             }) );
         } else {
@@ -62,10 +64,14 @@ export const startChecking = () => {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime() );
             
-            const { user } = body
+            const { user, userType } = body;
+
+            let loginName = (userType === 'Admin') ?  user.username : user.fullName;
+
             dispatch( login({
                 uid: body.user._id,
-                username: user.username
+                username: loginName,
+                tipoUsuario: userType
             }) );
         } else {
             // Token no es correcto, se cancela el cheking (se pondrá en false)

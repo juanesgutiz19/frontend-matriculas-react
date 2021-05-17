@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
     Redirect
   } from "react-router-dom";
   
-import { useDispatch, useSelector } from 'react-redux';
-
 
 import { AdminScreen } from '../components/Admin/AdminScreen';
 import { LoginScreen } from '../components/auth/LoginScreen';
@@ -36,6 +35,8 @@ export const AppRouter = () => {
     } else if (tipoUsuario === 'Student'){
         Screen = StudentScreen;
     }
+
+    console.log( tipoUsuario );
     
     // ¿Por qué !!uid? !'sdsdsd' --> false, !false --> true, !!null --> false
     return (
